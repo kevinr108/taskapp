@@ -4,9 +4,16 @@ import moment from 'moment';
 import PendingContainer from './components/PendingContainer';
 import CompletedContainer from './components/CompletedContainer';
 import Form from './components/Form';
+import PinkVector from './imgs/PinkVector.png';
+import BlueVector from './imgs/BlueVector.png';
 
 function App() {
-  const date = moment().format('MMM Do YYYY');
+  // const date = moment().format('MMM Do YYYY');
+  const month = moment().format('MMMM');
+  const weekday = moment().format('dddd');
+  const date = moment().format('D');
+  const year = moment().format('YYYY');
+
   const [tasks, setTasks] = useState([]);
   const [numTasks, setNumTasks] = useState(0);
   const [showPending, setShowPending] = useState(true);
@@ -54,15 +61,39 @@ function App() {
   };
 
   return (
-    <div>
-      <p>{date}</p>
-      <p>Number of Pending Tasks: {numTasks}</p>
-      <a href='#' onClick={() => setShowPending(true)}>
-        Pending
-      </a>
-      <a href='#' onClick={() => setShowPending(false)}>
-        Completed
-      </a>
+    <div className='app-container'>
+      <img className='pinkvector' src={PinkVector} />
+      <img className='bluevector' src={BlueVector} />
+      <div className='date-pending-container'>
+        <div className='date-container'>
+          <p id='weekday'>{weekday}</p>
+          <p id='monthdate'>{`${month}, ${date}`}</p>
+          <p id='year'>{year}</p>
+        </div>
+        <div className='task-pendingcontainer'>
+          <p>
+            {' '}
+            <span id='num-task'>{numTasks}</span>
+            <span id='task'>Tasks</span>
+          </p>
+        </div>
+      </div>
+      <div className='nav-bar'>
+        <a
+          href='#'
+          className={showPending ? 'active' : ''}
+          onClick={() => setShowPending(true)}
+        >
+          Pending
+        </a>
+        <a
+          href='#'
+          className={!showPending ? 'active' : ''}
+          onClick={() => setShowPending(false)}
+        >
+          Completed
+        </a>
+      </div>
       {showPending ? (
         <PendingContainer
           tasks={tasks.filter((task) => !task.isCompleted)}

@@ -3,8 +3,7 @@ import Task from './Task';
 function CompletedContainer({ tasks, markComplete, deleteTask }) {
   console.log('From CompletedContainer ', tasks);
   return (
-    <div>
-      This is the completed container{' '}
+    <div className='task-container'>
       {tasks.map((task) => (
         <Task
           key={task.id}

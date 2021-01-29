@@ -3,8 +3,7 @@ import Task from './Task';
 function PendingContainer({ tasks, markComplete, deleteTask }) {
   console.log('From PendingContainer ', tasks);
   return (
-    <div>
-      This is the pending container
+    <div className='task-container'>
       {tasks.map((task) => (
         <Task
           key={task.id}
