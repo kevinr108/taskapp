@@ -11,7 +11,6 @@ function Task({
   deleteTask,
 }) {
   return (
-    // <div>Tasks</div>
     <div className='task-item-border'>
       <div className='task-top'>
         <div className='task-top-left'>
@@ -31,9 +30,15 @@ function Task({
         </div>
       </div>
       <div className='priority-container'>
-        <p className='priority-low'>Low</p>
-        <p className='priority-medium'>Medium</p>
-        <p className='priority-high'>High</p>
+        <p className={`priority-low ${priority === 'Low' ? 'low' : ''}`}>Low</p>
+        <p
+          className={`priority-medium ${priority === 'Medium' ? 'medium' : ''}`}
+        >
+          Medium
+        </p>
+        <p className={`priority-high ${priority === 'High' ? 'high' : ''}`}>
+          High
+        </p>
       </div>
     </div>
   );

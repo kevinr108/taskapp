@@ -49,8 +49,9 @@ function Form({ addTask }) {
     // <div className='form-container'>
     <form onSubmit={handleSubmit}>
       <label>
-        Task
+        Task{' '}
         <input
+          autocomplete='off'
           type='text'
           name='taskTitle'
           value={state.taskTitle}
@@ -58,7 +59,7 @@ function Form({ addTask }) {
         />
       </label>
       <label>
-        Priority
+        Priority{' '}
         <select
           id='priority'
           name='priority'
@@ -72,7 +73,7 @@ function Form({ addTask }) {
         </select>
       </label>
       <label>
-        Due Date
+        Due Date{' '}
         <DatePicker
           selected={state.dueDate}
           dateFormat='MMMM d, yyyy'
@@ -81,7 +82,6 @@ function Form({ addTask }) {
       </label>
       <button>+</button>
     </form>
-    // </div>
   );
 }
 
